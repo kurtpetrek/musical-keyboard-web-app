@@ -1,125 +1,172 @@
 "use strict";
 
+/* Play note
+============================ */
+function playSingleNote(note) {
+  var elString = "#" + note.attr('id') + "-key";
+  if (elString.indexOf("sharp") >= 0){
+    $(elString).addClass("black-pressed");
+  } else {
+    $(elString).addClass("white-pressed");
+  }
+  note.get(0).currentTime = 0;
+  note.get(0).play();
+}
+/* stop note
+============================ */
+function stopSingleNote(note) {
+  var elString = "#" + note.attr('id') + "-key";
+
+  if (elString.indexOf("sharp") >= 0){
+    $(elString).removeClass("black-pressed");
+  } else {
+    $(elString).removeClass("white-pressed");
+  }
+    note.get(0).pause();
+    note.get(0).currentTime = 0;
+}
+
+
 /* Keyboard Triggers
 ============================ */
 
-$("#key-input").keydown(function( event ) { 
-  switch (event.key.toLowerCase()){
+function toggleNote(note, stop) {
+  switch (note) {
     case "a":
-      playSingleNote($("#c2"));
+      if (stop) {
+        stopSingleNote($("#c2"));
+      } else {
+        playSingleNote($("#c2"));
+      }
       break;
     case "w":
-      playSingleNote($("#c-sharp2"));
-      break;   
+      if (stop) {
+        stopSingleNote($("#c-sharp2"));
+      } else {
+        playSingleNote($("#c-sharp2"));
+      }
+      break;
     case "s":
-      playSingleNote($("#d2"));
+      if (stop) {
+        stopSingleNote($("#d2"));
+      } else {
+        playSingleNote($("#d2"));
+      }
       break;
     case "e":
-      playSingleNote($("#d-sharp2"));
-      break; 
+      if (stop) {
+        stopSingleNote($("#d-sharp2"));
+      } else {
+        playSingleNote($("#d-sharp2"));
+      }
+      break;
     case "d":
-      playSingleNote($("#e2"));
+      if (stop) {
+        stopSingleNote($("#e2"));
+      } else {
+        playSingleNote($("#e2"));
+      }
       break;
     case "f":
-      playSingleNote($("#f2"));
+      if (stop) {
+        stopSingleNote($("#f2"));
+      } else {
+        playSingleNote($("#f2"));
+      }
       break;
     case "t":
-      playSingleNote($("#f-sharp2"));
+      if (stop) {
+        stopSingleNote($("#f-sharp2"));
+      } else {
+        playSingleNote($("#f-sharp2"));
+      }
       break;
     case "g":
+      if (stop) {
+        stopSingleNote($("#g2"));
+      } else {
       playSingleNote($("#g2"));
+      }
       break;
     case "y":
-      playSingleNote($("#g-sharp2"));
+      if (stop) {
+        stopSingleNote($("#g-sharp2"));
+      } else {
+        playSingleNote($("#g-sharp2"));
+      }
       break;
     case "h":
-      playSingleNote($("#a2"));
+      if (stop) {
+        stopSingleNote($("#a2"));
+      } else {
+        playSingleNote($("#a2"));
+      }
       break;
     case "u":
-      playSingleNote($("#a-sharp2"));
+      if (stop) {
+        stopSingleNote($("#a-sharp2"));
+      } else {
+        playSingleNote($("#a-sharp2"));
+      }
       break;
     case "j":
-      playSingleNote($("#b2"));
+      if (stop) {
+        stopSingleNote($("#b2"));
+      } else {
+        playSingleNote($("#b2"));
+      }
       break;
     case "k":
-      playSingleNote($("#c3"));
+      if (stop) {
+        stopSingleNote($("#c3"));
+      } else {
+        playSingleNote($("#c3"));
+      }
       break;
     case "o":
-      playSingleNote($("#c-sharp3"));
+      if (stop) {
+        stopSingleNote($("#c-sharp3"));
+      } else {
+        playSingleNote($("#c-sharp3"));
+      }
       break;
     case "l":
-      playSingleNote($("#d3"));
+      if (stop) {
+        stopSingleNote($("#d3"));
+      } else {
+        playSingleNote($("#d3"));
+      }
       break;
     case "p":
-      playSingleNote($("#d-sharp3"));
+      if (stop) {
+        stopSingleNote($("#d-sharp3"));
+      } else {
+        playSingleNote($("#d-sharp3"));
+      }
       break;
     case ";":
-      playSingleNote($("#e3"));
+      if (stop) {
+        stopSingleNote($("#e3"));
+      } else {
+        playSingleNote($("#e3"));
+      }
       break;
     case "'":
-      playSingleNote($("#f3"));
+      if (stop) {
+        stopSingleNote($("#f3"));
+      } else {
+        playSingleNote($("#f3"));
+      }
       break;
   }
+}
 
+$("#key-input").keydown(function( event ) {
+  toggleNote(event.key.toLowerCase());
 });
 
 $("#key-input").keyup(function( event ) {
- switch (event.key.toLowerCase()){
-    case "a":
-      stopSingleNote($("#c2"));
-      break;
-    case "w":
-      stopSingleNote($("#c-sharp2"));
-      break;   
-    case "s":
-      stopSingleNote($("#d2"));
-      break;
-    case "e":
-      stopSingleNote($("#d-sharp2"));
-      break; 
-    case "d":
-      stopSingleNote($("#e2"));
-      break;
-    case "f":
-      stopSingleNote($("#f2"));
-      break;
-    case "t":
-      stopSingleNote($("#f-sharp2"));
-      break;
-    case "g":
-      stopSingleNote($("#g2"));
-      break;
-    case "y":
-      stopSingleNote($("#g-sharp2"));
-      break;
-    case "h":
-      stopSingleNote($("#a2"));
-      break;
-    case "u":
-      stopSingleNote($("#a-sharp2"));
-      break;
-    case "j":
-      stopSingleNote($("#b2"));
-      break; 
-    case "k":
-      stopSingleNote($("#c3"));
-      break;
-    case "o":
-      stopSingleNote($("#c-sharp3"));
-      break;
-    case "l":
-      stopSingleNote($("#d3"));
-      break;
-    case "p":
-      stopSingleNote($("#d-sharp3"));
-      break;
-    case ";":
-      stopSingleNote($("#e3"));
-      break;
-    case "'":
-      stopSingleNote($("#f3"));
-      break;
-  }
+  toggleNote(event.key.toLowerCase(), true)
 });
 
 /* Mouse Events
@@ -147,46 +194,5 @@ $('.keyboard').on({ 'touchend' : function(event){
 
 $(".keyboard div").mouseleave(function(){
   $(this).removeClass("white-pressed");
-  $(this).removeClass("black-pressed");  
+  $(this).removeClass("black-pressed");
 });
-
-
-
-
-
-/* Play note
-============================ */
-
-function playSingleNote(note) {
-  
-  var elString = "#" + note.attr('id') + "-key";
-  
-  if (elString.indexOf("sharp") >= 0){
-    $(elString).addClass("black-pressed");
-  } else {
-  $(elString).addClass("white-pressed");
-  }
-  
-  note.get(0).play();
-  
-}
-
-/* stop note
-============================ */
-
-function stopSingleNote(note) {
-  var elString = "#" + note.attr('id') + "-key";
-  
-  if (elString.indexOf("sharp") >= 0){
-    $(elString).removeClass("black-pressed");
-  } else {
-  $(elString).removeClass("white-pressed");
-  }
-  
-
-    note.get(0).pause();
-    note.get(0).currentTime = 0;
-    
-  
-
-}
