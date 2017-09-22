@@ -9,7 +9,6 @@ function playSingleNote(note) {
   } else {
     $(elString).addClass("white-pressed");
   }
-  note.get(0).currentTime = 0;
   note.get(0).play();
 }
 /* stop note
